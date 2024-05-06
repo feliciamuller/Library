@@ -1,0 +1,36 @@
+﻿@model BookLoan
+
+<div class="row">
+    <h3>Skapa ett nytt boklån</h3>
+    <div class="col-md-4">
+        <form asp-action="CreateBookLoan" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label>Välj kund i listan</label>
+                <select asp-for="FKCustomerId" class="form-control">
+                    <option disabled selected>Välj kund</option>
+                    @foreach(var cust in ViewBag.Customers)
+                    {
+                        <option value="@cust.CustomerId">@cust.CustomerFirstName</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Välj bok i listan</label>
+                <select asp-for="FKBookId" class="form-control">
+                    <option disabled selected>Välj bok</option>
+                    @foreach (var book in ViewBag.Books)
+                    {
+                        <option value="@book.BookId">@book.BookName</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Skapa" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+</div>
+<div>
+    <a asp-action="Index">Gå tillbaka</a>
+</div>

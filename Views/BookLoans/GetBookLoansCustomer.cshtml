@@ -1,0 +1,40 @@
+﻿@model IEnumerable<BookLoan>
+
+<div class="row">
+    <h3>Hämta boklån för en specifik kund</h3>
+    <div class="col-md-4">
+    <form asp-action="GetBookLoansCustomer" method="get">
+        <select name="id" class="form-control">
+            <option value="" asp-for="CustomerId">Välj kund</option>
+            @foreach (var cust in ViewBag.AllCustomers)
+            {
+                <option value="@cust.CustomerId">@cust.CustomerFirstName</option>
+            }
+        </select>
+        <button type="submit" class="btn btn-success">Visa</button>
+    </form>
+    @{
+        bool firstLoop = true;
+    }
+    <div>
+        @foreach (var book in Model)
+        {
+            if (firstLoop)
+            {
+                @for (var i = 0; i == 0; i++)
+                {
+                    <h4>Lånare: @book.Customer.CustomerFirstName</h4>
+                    <hr />
+                }
+            }
+            <p><strong>Bokens titel: </strong>@book.Book.BookName</p>
+                <p><strong>Datum för lån: </strong> @book.LoanDate.ToString("yyyy/MM/dd")</p>
+            <hr/>
+            firstLoop = false;
+        }
+    </div>
+</div>
+</div>
+<div>
+    <a asp-action="Index">Gå tillbaka</a>
+</div>

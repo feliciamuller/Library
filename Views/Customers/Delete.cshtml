@@ -1,0 +1,12 @@
+﻿﻿
+@model Customer
+
+<h3>Radera kund</h3>
+<div>
+    <form asp-action="Delete" method="post">
+        <input type="hidden" asp-for="CustomerId"/>
+        <h4>@Model.CustomerFirstName</h4>
+        <input type="submit" value="Delete" class="btn btn-danger"/>
+        <a asp-action="GetCustomers" class="btn btn-success">Ångra</a>
+    </form>
+</div>

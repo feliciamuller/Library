@@ -1,0 +1,36 @@
+﻿@model IEnumerable<BookLoan>
+
+<div class="col-md-9">
+    <h3>Alla boklån</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Titel</th>
+                <th>Lånare förnamn</th>
+                <th>Lånare efternamn</th>
+                <th>Datum för lån</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if(Model == null)
+            {
+                <p>Inga boklån hittades</p>
+            }
+            else
+            {
+                @foreach (var bookloan in Model)
+                {
+                    <tr>
+                        <td>@bookloan.Book.BookName</td>
+                        <td>@bookloan.Customer.CustomerFirstName</td>
+                        <td>@bookloan.Customer.CustomerLastName</td>
+                        <td>@bookloan.LoanDate.ToString("yyyy/MM/dd")</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+<div>
+    <a asp-action="Index">Gå tillbaka</a>
+</div>

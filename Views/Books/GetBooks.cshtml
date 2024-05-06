@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Book>
+<div class="col-md-9">
+    <h3>Alla böcker</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Titel</th>
+                <th>Författare</th>
+                <th>Lanseringsdatum</th>
+                <th>Tillgänglig för lån</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var book in Model)
+            {
+                <tr>
+                    <td>@book.BookName</td>
+                    <td>@book.AuthorName</td>
+                    <td>@book.ReleaseDate.ToString("yyyy/MM/dd")</td>
+                    <td>@(book.IsAvailable ? "Ja" : "Nej")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div>
+    <a asp-action="Index">Gå tillbaka</a>
+</div>
